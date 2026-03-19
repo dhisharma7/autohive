@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
     <header className="header-sticky header-style-one sticky_enabled">
       <div className="at_topbar d-none d-sm-block">
@@ -78,11 +83,7 @@ export default function Header() {
                 </nav>
                 <button
                   className="mobile-menu-toggle header-toggle-btn ms-4 d-lg-none"
-                  onClick={() => {
-                    document
-                      .querySelector(".mobile-menu")
-                      ?.classList.toggle("active");
-                  }}
+                  onClick={() => setMobileMenuOpen(true)}
                 >
                   <span></span>
                   <span></span>
@@ -95,14 +96,10 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <div className="mobile-menu position-fixed bg-white deep-shadow">
+      <div className={`mobile-menu position-fixed bg-white deep-shadow${mobileMenuOpen ? " active" : ""}`}>
         <button
           className="close-menu position-absolute"
-          onClick={() => {
-            document
-              .querySelector(".mobile-menu")
-              ?.classList.remove("active");
-          }}
+          onClick={closeMobileMenu}
         >
           <i className="fa-solid fa-xmark"></i>
         </button>
@@ -119,19 +116,19 @@ export default function Header() {
         <nav className="mobile-menu-wrapper mt-40">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={closeMobileMenu}>Home</Link>
             </li>
             <li>
-              <Link to="/inventory">Inventory</Link>
+              <Link to="/inventory" onClick={closeMobileMenu}>Inventory</Link>
             </li>
             <li>
-              <Link to="/dealers">Dealers</Link>
+              <Link to="/dealers" onClick={closeMobileMenu}>Dealers</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={closeMobileMenu}>About</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact" onClick={closeMobileMenu}>Contact</Link>
             </li>
           </ul>
         </nav>
