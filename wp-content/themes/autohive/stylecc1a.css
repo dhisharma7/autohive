@@ -1,0 +1,35 @@
+/*
+Theme Name: Autohive
+Theme URI: https://autohive-wp.themetags.com/
+Author: Themetags
+Author URI: https://themetags.com/
+Description: Autohive is a multipurpose WordPress theme specifically designed for car dealerships, rental agencies, and automotive directories. It includes all the necessary features and tools to easily create a professional-looking website, including an inventory management system, vehicle listings, and a booking system. The theme is fully responsive and looks great on all devices, and it is also SEO optimized to help your website rank higher in search engines. Overall, Autohive is a powerful and flexible theme that is perfect for anyone in the automotive industry looking to create a professional website.
+Version: 1.5.1
+Requires at least: 5.0
+Tested up to: 6.2
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: autohive
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+:root {
+
+    /*=== Color Variables ===*/
+    --color_primary: #FC0012;
+    --color_secondary: #0b163f;
+    --color_body: #575757;
+
+}
+
+
+.h2-feedback-single .h2-feedback-content .star-rating {
+    padding: 3px 19px;
+    background: #ffe3c5;
+    font-size: 12px;
+    font-weight: 700;
+}

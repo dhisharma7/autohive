@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+__MACOSX/
+
+# Editors
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
