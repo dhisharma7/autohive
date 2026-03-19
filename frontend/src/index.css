@@ -1,0 +1,311 @@
+/* AutoHive Frontend Shell - Custom Styles */
+:root {
+  --ah-primary: #e02529;
+  --ah-primary-dark: #c41e22;
+  --ah-dark: #1a1a2e;
+  --ah-text: #555;
+  --ah-heading: #1a1a2e;
+  --ah-light-bg: #f8f9fa;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--ah-text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Primary color overrides for Bootstrap */
+.btn-primary {
+  background-color: var(--ah-primary) !important;
+  border-color: var(--ah-primary) !important;
+}
+.btn-primary:hover {
+  background-color: var(--ah-primary-dark) !important;
+  border-color: var(--ah-primary-dark) !important;
+}
+.btn-outline-primary {
+  color: var(--ah-primary) !important;
+  border-color: var(--ah-primary) !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--ah-primary) !important;
+  border-color: var(--ah-primary) !important;
+  color: #fff !important;
+}
+.text-primary {
+  color: var(--ah-primary) !important;
+}
+.bg-primary {
+  background-color: var(--ah-primary) !important;
+}
+
+/* Header Styles */
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+.at_topbar {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+}
+.tp-info p {
+  font-size: 13px;
+  color: #555;
+}
+.tp-info .icon-wrapper {
+  color: var(--ah-primary);
+}
+.at_header_nav {
+  padding: 12px 0;
+}
+.logo-wrapper img {
+  max-height: 40px;
+}
+.at_nav_menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+}
+.at_nav_menu ul li a {
+  text-decoration: none;
+  color: var(--ah-heading);
+  font-weight: 500;
+  font-size: 15px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.at_nav_menu ul li a:hover,
+.at_nav_menu ul li a.active {
+  color: var(--ah-primary);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100vh;
+  z-index: 9999;
+  transition: right 0.3s;
+  overflow-y: auto;
+  padding: 20px;
+}
+.mobile-menu.active {
+  right: 0;
+}
+.mobile-menu .close-menu {
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.mobile-menu-wrapper ul {
+  list-style: none;
+  padding: 0;
+}
+.mobile-menu-wrapper ul li {
+  border-bottom: 1px solid #eee;
+}
+.mobile-menu-wrapper ul li a {
+  display: block;
+  padding: 12px 0;
+  color: var(--ah-heading);
+  text-decoration: none;
+  font-weight: 500;
+}
+.header-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.header-toggle-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ah-heading);
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* Breadcrumb */
+.breadcrumb-section {
+  background: var(--ah-dark);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  padding: 60px 0 40px;
+  overflow: hidden;
+}
+.breadcrumb-shape {
+  left: 0;
+  top: 0;
+  opacity: 0.1;
+  height: 100%;
+}
+.breadcrumb-shape-right {
+  right: 0;
+  top: 0;
+  opacity: 0.1;
+  height: 100%;
+}
+.breadcrumb-content-wrapper h1 {
+  font-size: 2rem;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.6);
+}
+.breadcrumb-item a {
+  opacity: 0.8;
+}
+.breadcrumb-item a:hover {
+  opacity: 1;
+}
+
+/* Footer */
+.at_footer {
+  background: var(--ah-dark);
+  color: #ccc;
+}
+.at_footer .widget-title {
+  color: #fff;
+}
+.footer-links li {
+  margin-bottom: 8px;
+}
+.footer-links li a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links li a:hover {
+  color: var(--ah-primary);
+}
+.footer-contact li span {
+  color: #aaa;
+}
+.footer-logo img {
+  filter: brightness(0) invert(1);
+}
+.footer-social .social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.footer-social .social-icon:hover {
+  background: var(--ah-primary);
+}
+.footer-bottom {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.footer-bottom a {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-bottom a:hover {
+  color: var(--ah-primary) !important;
+}
+
+/* Car Card */
+.car-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.car-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+}
+.car-badge {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+.car-card-meta .meta-item i {
+  color: var(--ah-primary);
+  font-size: 13px;
+}
+
+/* Dealer Card */
+.dealer-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.dealer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Body Type Card */
+.body-type-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.body-type-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Brand Card */
+.brand-card {
+  transition: transform 0.2s;
+}
+.brand-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Spacing helpers matching theme */
+.pt-40 { padding-top: 40px; }
+.pt-60 { padding-top: 60px; }
+.pt-80 { padding-top: 80px; }
+.pb-30 { padding-bottom: 30px; }
+.pb-60 { padding-bottom: 60px; }
+.pb-80 { padding-bottom: 80px; }
+.mt-40 { margin-top: 40px; }
+.mb-40 { margin-bottom: 40px; }
+.py-60 { padding-top: 60px; padding-bottom: 60px; }
+.py-80 { padding-top: 80px; padding-bottom: 80px; }
+
+@media (max-width: 767px) {
+  .pt-80 { padding-top: 50px; }
+  .pb-80 { padding-bottom: 50px; }
+  .py-80 { padding-top: 50px; padding-bottom: 50px; }
+}
+
+/* Filter sidebar */
+.filter-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+/* Hero section responsive */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 450px !important;
+  }
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Utility */
+a {
+  transition: color 0.2s;
+}
+.deep-shadow {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
