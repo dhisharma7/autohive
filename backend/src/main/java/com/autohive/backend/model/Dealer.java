@@ -1,9 +1,26 @@
 package com.autohive.backend.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "dealers")
 public class Dealer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false, unique = true)
     private String slug;
+
     private String logo;
     private String image;
     private String phone;
@@ -12,28 +29,13 @@ public class Dealer {
     private String website;
     private double rating;
     private int totalListings;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
+
     private String openHours;
 
     public Dealer() {}
-
-    public Dealer(Long id, String name, String slug, String logo, String image,
-                  String phone, String email, String address, String website,
-                  double rating, int totalListings, String description, String openHours) {
-        this.id = id;
-        this.name = name;
-        this.slug = slug;
-        this.logo = logo;
-        this.image = image;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.website = website;
-        this.rating = rating;
-        this.totalListings = totalListings;
-        this.description = description;
-        this.openHours = openHours;
-    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

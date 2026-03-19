@@ -1,12 +1,36 @@
 package com.autohive.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 import java.util.List;
 
+@Entity
+@Table(name = "cars")
 public class Car {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false, unique = true)
     private String slug;
+
     private int price;
+
+    @Column(name = "\"year\"")
     private int year;
     private String make;
     private String model;
@@ -18,37 +42,23 @@ public class Car {
     private String engine;
     private int horsepower;
     private String image;
+
+    @Convert(converter = StringListConverter.class)
+    @Column(columnDefinition = "TEXT")
     private List<String> gallery;
+
+    @Convert(converter = StringListConverter.class)
+    @Column(columnDefinition = "TEXT")
     private List<String> features;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
-    private Long dealerId;
+
+    @ManyToOne
+    @JoinColumn(name = "dealer_id")
+    private Dealer dealer;
 
     public Car() {}
-
-    public Car(Long id, String title, String slug, int price, int year, String make, String model,
-               int mileage, String fuel, String transmission, String bodyType, String color,
-               String engine, int horsepower, String image, List<String> gallery,
-               List<String> features, String description, Long dealerId) {
-        this.id = id;
-        this.title = title;
-        this.slug = slug;
-        this.price = price;
-        this.year = year;
-        this.make = make;
-        this.model = model;
-        this.mileage = mileage;
-        this.fuel = fuel;
-        this.transmission = transmission;
-        this.bodyType = bodyType;
-        this.color = color;
-        this.engine = engine;
-        this.horsepower = horsepower;
-        this.image = image;
-        this.gallery = gallery;
-        this.features = features;
-        this.description = description;
-        this.dealerId = dealerId;
-    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -104,6 +114,11 @@ public class Car {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public Long getDealerId() { return dealerId; }
-    public void setDealerId(Long dealerId) { this.dealerId = dealerId; }
+    public Dealer getDealer() { return dealer; }
+    public void setDealer(Dealer dealer) { this.dealer = dealer; }
+
+    @JsonProperty("dealerId")
+    public Long getDealerId() {
+        return dealer != null ? dealer.getId() : null;
+    }
 }

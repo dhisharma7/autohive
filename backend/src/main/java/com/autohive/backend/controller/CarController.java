@@ -1,7 +1,7 @@
 package com.autohive.backend.controller;
 
-import com.autohive.backend.data.MockData;
 import com.autohive.backend.model.Car;
+import com.autohive.backend.service.CarService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,16 +14,20 @@ import java.util.List;
 @RequestMapping("/api")
 public class CarController {
 
+    private final CarService carService;
+
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
+
     @GetMapping("/cars")
     public List<Car> getAllCars() {
-        return MockData.CARS;
+        return carService.findAll();
     }
 
     @GetMapping("/cars/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable Long id) {
-        return MockData.CARS.stream()
-            .filter(car -> car.getId().equals(id))
-            .findFirst()
+        return carService.findById(id)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
