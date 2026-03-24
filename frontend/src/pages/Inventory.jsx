@@ -4,19 +4,19 @@ import CarCard from "../components/CarCard";
 import { fetchCars } from "../api";
 
 export default function Inventory() {
-  const [cars, setCars] = useState([]);
-
-  useEffect(() => {
-    fetchCars().then(setCars);
-  }, []);
+  const [allCars, setAllCars] = useState([]);
   const [filterMake, setFilterMake] = useState("");
   const [filterBody, setFilterBody] = useState("");
   const [sortBy, setSortBy] = useState("default");
 
-  const makes = [...new Set(cars.map((c) => c.make))];
-  const bodyTypes = [...new Set(cars.map((c) => c.bodyType))];
+  useEffect(() => {
+    fetchCars().then(setAllCars).catch(() => setAllCars([]));
+  }, []);
 
-  let filtered = cars.filter((car) => {
+  const makes = [...new Set(allCars.map((c) => c.make))];
+  const bodyTypes = [...new Set(allCars.map((c) => c.bodyType))];
+
+  let filtered = allCars.filter((car) => {
     if (filterMake && car.make !== filterMake) return false;
     if (filterBody && car.bodyType !== filterBody) return false;
     return true;
@@ -117,7 +117,7 @@ export default function Inventory() {
                 <p className="text-muted mb-0">
                   Showing{" "}
                   <strong>
-                    {filtered.length} of {cars.length}
+                    {filtered.length} of {allCars.length}
                   </strong>{" "}
                   vehicles
                 </p>
