@@ -5,6 +5,7 @@ import com.autohive.backend.repository.DealerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DealerService {
@@ -17,5 +18,13 @@ public class DealerService {
 
     public List<Dealer> findAll() {
         return dealerRepository.findAll();
+    }
+
+    public Optional<Dealer> findById(Long id) {
+        return dealerRepository.findById(id);
+    }
+
+    public Optional<Dealer> findBySlug(String slug) {
+        return dealerRepository.findBySlug(slug);
     }
 }

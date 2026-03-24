@@ -1,8 +1,15 @@
+import { useState, useEffect } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import DealerCard from "../components/DealerCard";
-import { dealers } from "../data/mockData";
+import { fetchDealers } from "../api";
 
 export default function Dealers() {
+  const [dealers, setDealers] = useState([]);
+
+  useEffect(() => {
+    fetchDealers().then(setDealers);
+  }, []);
+
   return (
     <>
       <Breadcrumb
