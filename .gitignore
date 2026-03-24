@@ -1,13 +1,22 @@
-# macOS
-.DS_Store
-__MACOSX/
+# Dependencies
+node_modules/
 
-# Editors
+# Build output
+backend/target/
+frontend/dist/
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# IDE
+.idea/
+.vscode/
+*.iml
 *.swp
 *.swo
-*~
-.vscode/
-.idea/
 
 # OS
+.DS_Store
 Thumbs.db

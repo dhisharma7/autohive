@@ -10,8 +10,8 @@ export default function Home() {
   const [dealers, setDealers] = useState([]);
 
   useEffect(() => {
-    fetchCars().then(setCars);
-    fetchDealers().then(setDealers);
+    fetchCars().then(setCars).catch(() => setCars([]));
+    fetchDealers().then(setDealers).catch(() => setDealers([]));
   }, []);
 
   return (
