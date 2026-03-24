@@ -11,13 +11,13 @@ export default function DealerDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchDealerBySlug(slug).then(data => {
+    fetchDealerBySlug(slug).then(async data => {
       setDealer(data);
       if (data?.id) {
-        fetchCarsByDealer(data.id).then(setDealerCars);
+        await fetchCarsByDealer(data.id).then(setDealerCars);
       }
       setLoading(false);
-    });
+    }).catch(() => setLoading(false));
   }, [slug]);
 
   if (loading) return <div className="container py-80 text-center"><p>Loading...</p></div>;
