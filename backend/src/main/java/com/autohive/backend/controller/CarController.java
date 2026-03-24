@@ -31,4 +31,16 @@ public class CarController {
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/cars/slug/{slug}")
+    public ResponseEntity<Car> getCarBySlug(@PathVariable String slug) {
+        return carService.findBySlug(slug)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/dealers/{dealerId}/cars")
+    public List<Car> getCarsByDealer(@PathVariable Long dealerId) {
+        return carService.findByDealerId(dealerId);
+    }
 }

@@ -1,10 +1,25 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
-import { cars, dealers } from "../data/mockData";
+import { fetchCarBySlug, fetchDealerById } from "../api";
 
 export default function CarDetail() {
   const { slug } = useParams();
-  const car = cars.find((c) => c.slug === slug);
+  const [car, setCar] = useState(null);
+  const [dealer, setDealer] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchCarBySlug(slug).then(data => {
+      setCar(data);
+      if (data?.dealerId) {
+        fetchDealerById(data.dealerId).then(setDealer);
+      }
+      setLoading(false);
+    });
+  }, [slug]);
+
+  if (loading) return <div className="container py-80 text-center"><p>Loading...</p></div>;
 
   if (!car) {
     return (
@@ -30,8 +45,6 @@ export default function CarDetail() {
       </>
     );
   }
-
-  const dealer = dealers.find((d) => d.id === car.dealerId);
 
   return (
     <>

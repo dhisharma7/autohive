@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import CarCard from "../components/CarCard";
-import { cars } from "../data/mockData";
+import { fetchCars } from "../api";
 
 export default function Inventory() {
+  const [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    fetchCars().then(setCars);
+  }, []);
   const [filterMake, setFilterMake] = useState("");
   const [filterBody, setFilterBody] = useState("");
   const [sortBy, setSortBy] = useState("default");

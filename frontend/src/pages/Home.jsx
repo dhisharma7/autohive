@@ -1,9 +1,19 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CarCard from "../components/CarCard";
 import DealerCard from "../components/DealerCard";
-import { cars, dealers, brands, bodyTypes } from "../data/mockData";
+import { brands, bodyTypes } from "../data/mockData";
+import { fetchCars, fetchDealers } from "../api";
 
 export default function Home() {
+  const [cars, setCars] = useState([]);
+  const [dealers, setDealers] = useState([]);
+
+  useEffect(() => {
+    fetchCars().then(setCars);
+    fetchDealers().then(setDealers);
+  }, []);
+
   return (
     <>
       {/* Hero Section */}

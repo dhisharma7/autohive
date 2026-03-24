@@ -23,4 +23,12 @@ public class CarService {
     public Optional<Car> findById(Long id) {
         return carRepository.findById(id);
     }
+
+    public Optional<Car> findBySlug(String slug) {
+        return carRepository.findBySlug(slug);
+    }
+
+    public List<Car> findByDealerId(Long dealerId) {
+        return carRepository.findByDealerId(dealerId);
+    }
 }
